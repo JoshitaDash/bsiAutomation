@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <test thread-count="5" name="Chrome Browser(failed)">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="bsiShopRedesignSprint4and5.RegistrationsWithDiffProfile">
+        <methods>
+          <include name="createRegUserNonUKProfile"/>
+          <include name="extentQuit"/>
+          <include name="launchBrowser"/>
+          <include name="createRegUserUKProfile"/>
+          <include name="quit"/>
+          <include name="getDriverInstance"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- bsiShopRedesignSprint4and5.RegistrationsWithDiffProfile -->
+      <class name="bsiShopRedesignSprint2.VerifyMemberTab">
+        <methods>
+          <include name="extentQuit"/>
+          <include name="launchBrowser"/>
+          <include name="quit"/>
+          <include name="signInMember"/>
+          <include name="getDriverInstance"/>
+          <include name="verifyStatus"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- bsiShopRedesignSprint2.VerifyMemberTab -->
+      <class name="bsiShopRedesignSprint4and5.VerifyMemberProfile">
+        <methods>
+          <include name="extentQuit"/>
+          <include name="launchBrowser"/>
+          <include name="quit"/>
+          <include name="signInMember"/>
+          <include name="verifyMemberTab"/>
+          <include name="getDriverInstance"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- bsiShopRedesignSprint4and5.VerifyMemberProfile -->
+      <class name="bsiShopRedesignSprint4and5.AddInvoiceToBasketFromMemTab">
+        <methods>
+          <include name="AddInvoiceToBasket"/>
+          <include name="extentQuit"/>
+          <include name="launchBrowser"/>
+          <include name="quit"/>
+          <include name="signInMember"/>
+          <include name="getDriverInstance"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- bsiShopRedesignSprint4and5.AddInvoiceToBasketFromMemTab -->
+      <class name="bsiShopRedesignSprint2.RegisterSubscriptions">
+        <methods>
+          <include name="regCNQuote"/>
+          <include name="extentQuit"/>
+          <include name="launchBrowser"/>
+          <include name="quit"/>
+          <include name="regEurocodes"/>
+          <include name="getDriverInstance"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- bsiShopRedesignSprint2.RegisterSubscriptions -->
+    </classes>
+  </test> <!-- Chrome Browser(failed) -->
+</suite> <!-- Failed suite [Suite] -->

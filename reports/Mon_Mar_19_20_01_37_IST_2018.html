@@ -1,0 +1,2935 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--
+			ExtentReports Library 2.41.1 | http://relevantcodes.com/extentreports-for-selenium/ | https://github.com/anshooarora/
+			Copyright (c) 2015, Anshoo Arora (Relevant Codes) | Copyrights licensed under the New BSD License | http://opensource.org/licenses/BSD-3-Clause
+			Documentation: http://extentreports.relevantcodes.com 
+		-->
+
+		<meta charset='UTF-8' /> 
+		<meta name='description' content='ExtentReports (by Anshoo Arora) is a reporting library for automation testing for .NET and Java. It creates detailed and beautiful HTML reports for modern browsers. ExtentReports shows test and step summary along with dashboards, system and environment details for quick analysis of your tests.' />
+		<meta name='robots' content='noodp, noydir' />
+		<meta name='viewport' content='width=device-width, initial-scale=1' />
+		<meta name='extentx' id='extentx' content='' />
+		
+		<title>
+				Automation Reports
+		</title>
+		
+		
+		<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+		<link href='https://cdn.rawgit.com/anshooarora/extentreports/6032d73243ba4fe4fb8769eb9c315d4fdf16fe68/cdn/extent.css' type='text/css' rel='stylesheet' />
+		
+		<style>
+				
+            
+                
+            
+        
+		</style>
+	</head>
+	
+	
+	<body class='extent default standard hide-overflow'>
+		<!-- nav -->
+		<nav>
+			<div class='logo-container blue darken-2'>
+				<a class='logo-content' href='http://extentreports.relevantcodes.com'>
+					<span>ExtentReports</span>
+				</a>
+				<a href='#' data-activates='slide-out' class='button-collapse hide-on-large-only'><i class='mdi-navigation-apps'></i></a>
+			</div>
+			<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+				<li class='analysis waves-effect active'><a href='#!' class='test-view' onclick="_updateCurrentStage(0)"><i class='mdi-action-dashboard'></i>Test Details</a></li>
+				<li class='analysis waves-effect'>
+					<a href='#!' onclick="_updateCurrentStage(-1)" class='dashboard-view'><i class='mdi-action-track-changes'></i></i>Analysis</a>
+				</li>
+			</ul>
+			<span class='report-name'>BSI Shop Re-Design Automation Report</span> <span class='report-headline'>Headline 1</span>
+			<ul class='right hide-on-med-and-down nav-right'>
+				<li class='theme-selector' alt='Click to toggle dark theme. To enable by default, use js configuration $("body").addClass("dark");' title='Click to toggle dark theme. To enable by default, use js configuration $("body").addClass("dark");'>
+					<i class='mdi-hardware-desktop-windows'></i>
+				</li>
+				<li>
+					<span class='suite-started-time'>2018-03-19 20:29:01</span>
+				</li>
+				<li>
+					<span>v2.41.1</span>
+				</li>
+			</ul>
+		</nav>
+		<!-- /nav -->
+		
+		<!-- container -->
+		<div class='container'>
+			
+			<!-- dashboard -->
+			<div id='dashboard-view' class='row'>
+				<div class='time-totals'>
+					<div class='col l2 m4 s6'>
+						<div class='card suite-total-tests'> 
+							<span class='panel-name'>Total Tests</span> 
+							<span class='total-tests'> <span class='panel-lead'></span> </span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s6'>
+						<div class='card suite-total-steps'> 
+							<span class='panel-name'>Total Steps</span> 
+							<span class='total-steps'> <span class='panel-lead'></span> </span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s12'>
+						<div class='card suite-total-time-current'> 
+							<span class='panel-name'>Total Time Taken (Current Run)</span> 
+							<span class='suite-total-time-current-value panel-lead'>0h 27m 24s+1ms</span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s12'>
+						<div class='card suite-total-time-overall'> 
+							<span class='panel-name'>Total Time Taken (Overall)</span> 
+							<span class='suite-total-time-overall-value panel-lead'>0h 27m 24s+1ms</span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s6 suite-start-time'>
+						<div class='card accent green-accent'> 
+							<span class='panel-name'>Start</span> 
+							<span class='panel-lead suite-started-time'>2018-03-19 20:01:37</span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s6 suite-end-time'>
+						<div class='card accent pink-accent'> 
+							<span class='panel-name'>End</span> 
+							<span class='panel-lead suite-ended-time'>2018-03-19 20:29:01</span> 
+						</div> 
+					</div>
+				</div>
+				<div class='charts'>
+					<div class='col s12 m6 l4 fh'> 
+						<div class='card-panel'> 
+							<div>
+								<span class='panel-name'>Tests View</span>
+							</div> 
+							<div class='panel-setting modal-trigger test-count-setting right'>
+								<a href='#test-count-setting'><i class='mdi-navigation-more-vert text-md'></i></a>
+							</div> 
+							<div class='chart-box'>
+								<canvas class='text-centered' id='test-analysis'></canvas>
+							</div> 
+							<div>
+								<span class='weight-light'><span class='t-pass-count weight-normal'></span> test(s) passed</span>
+							</div> 
+							<div>
+								<span class='weight-light'><span class='t-fail-count weight-normal'></span> test(s) failed, <span class='t-others-count weight-normal'></span> others</span>
+							</div> 
+						</div> 
+					</div> 
+					<div class='col s12 m6 l4 fh'> 
+						<div class='card-panel'> 
+							<div>
+								<span class='panel-name'>Steps View</span>
+							</div> 
+							<div class='panel-setting modal-trigger step-status-filter right'>
+								<a href='#step-status-filter'><i class='mdi-navigation-more-vert text-md'></i></a>
+							</div> 
+							<div class='chart-box'>
+								<canvas class='text-centered' id='step-analysis'></canvas>
+							</div> 
+							<div>
+								<span class='weight-light'><span class='s-pass-count weight-normal'></span> step(s) passed </span>
+							</div> 
+							<div>
+								<span class='weight-light'><span class='s-fail-count weight-normal'></span> step(s) failed, <span class='s-others-count weight-normal'></span> others</span>
+							</div> 
+						</div> 
+					</div>
+					<div class='col s12 m12 l4 fh'> 
+						<div class='card-panel'> 
+							<span class='panel-name'>Pass Percentage</span> 
+							<span class='pass-percentage panel-lead'></span> 
+							<div class='progress light-blue lighten-3'> 
+								<div class='determinate light-blue'></div> 
+							</div> 
+						</div> 
+					</div>
+				</div>
+				<div class='system-view'>
+					<div class='col l4 m12 s12'>
+						<div class='card-panel'>
+							<span class='label info outline right'>Environment</span>
+							<table>
+								<thead>
+									<tr>
+										<th>Param</th>
+										<th>Value</th>
+									</tr>
+								</thead>
+								<tbody>
+										<tr>
+											<td>User Name</td>
+											<td>TCS</td>
+										</tr>
+										<tr>
+											<td>OS</td>
+											<td>Windows 10</td>
+										</tr>
+										<tr>
+											<td>Java Version</td>
+											<td>1.8.0_144</td>
+										</tr>
+										<tr>
+											<td>Host Name</td>
+											<td>TCS</td>
+										</tr>
+										<tr>
+											<td>Selenium Version</td>
+											<td>3.8.0</td>
+										</tr>
+										<tr>
+											<td>Environment</td>
+											<td>https://qa4-5rxefly-7redg7uykvdko.eu.magentosite.cloud</td>
+										</tr>
+										<tr>
+											<td>Browser</td>
+											<td>Chrome 63.0.3</td>
+										</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /dashboard -->
+			
+			<!-- tests -->
+			<div id='test-view' class='row _addedTable'>
+				<div class='col _addedCell1'>
+					<div class='contents'>
+						<div class='card-panel heading'>
+							<h5>Tests</h5>
+						</div>
+						<div class='card-panel filters'>
+							<div>
+								<a class='dropdown-button btn-floating btn-small waves-effect waves-light grey tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+									<i class='mdi-action-reorder'></i>
+								</a>
+								<ul id='tests-toggle' class='dropdown-content'>
+									<li class='pass'><a href='#!'>Pass</a></li>
+									<li class='fail'><a href='#!'>Fail</a></li>
+									<li class='skip'><a href='#!'>Skip</a></li>
+									<li class='divider'></li>
+									<li class='clear'><a href='#!'>Clear Filters</a></li>
+								</ul>
+							</div>
+							<div>
+								<a class='btn-floating btn-small waves-effect waves-light grey' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+									<i class='mdi-navigation-close'></i>
+								</a>
+							</div>
+							<div>
+								<a class='btn-floating btn-small waves-effect waves-light grey' id='enableDashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+									<i class='mdi-action-track-changes'></i>
+								</a>
+							</div>
+							<div>
+								<a class='btn-floating btn-small waves-effect waves-light blue enabled' id='refreshCharts' alt='Refresh Charts on Filters' title='Refresh Charts on Filters'>
+									<i class='mdi-navigation-refresh'></i>
+								</a>
+							</div>
+							<div class='search' alt='Search Tests' title='Search Tests'>
+								<div class='input-field left'>
+									<input id='searchTests' type='text' class='validate' placeholder='Search Tests...'>
+								</div>
+								<a href="#" class='btn-floating btn-small waves-effect waves-light grey'>
+									<i class='mdi-action-search'></i>
+								</a>
+							</div>
+						</div>
+						<div class='card-panel no-padding-h no-padding-v no-margin-v'>
+							<div class='wrapper'>
+								<ul id='test-collection' class='test-collection'>
+										<li class='collection-item test displayed active pass ' extentid='c6461381-44c4-4516-985e-7c66210cb8b0'>
+											<div class='test-head'>
+												<span class='test-name'>Sprint 2 - Registered User Sign In </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2018-03-19 20:01:53</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:01:56</td>
+																	<td class='step-details'>Click on login link</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:02:06</td>
+																	<td class='step-details'>Enter Email ID</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:02:14</td>
+																	<td class='step-details'>Enter Password</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:02:16</td>
+																	<td class='step-details'>Click on SignIn button</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:02:30</td>
+																	<td class='step-details'>Login Successful</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='d4adde26-b215-43ba-894d-e9dd4f3cb4a8'>
+											<div class='test-head'>
+												<span class='test-name'>Sprint 2 - Book Paid Event </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2018-03-19 20:02:30</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:02:30</td>
+																	<td class='step-details'>Enter Event name in Search Box</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:02:30</td>
+																	<td class='step-details'>Click on Search</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:02:43</td>
+																	<td class='step-details'>Select the Event</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:02:53</td>
+																	<td class='step-details'>Click Book Now</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:03:04</td>
+																	<td class='step-details'>Click Add Delegate</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:03:06</td>
+																	<td class='step-details'>Enter Title</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:03:06</td>
+																	<td class='step-details'>Enter First Name</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:03:06</td>
+																	<td class='step-details'>Enter Last Name</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:03:06</td>
+																	<td class='step-details'>Enter Email ID</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:03:07</td>
+																	<td class='step-details'>Enter Telephone Number</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:03:07</td>
+																	<td class='step-details'>Enter Street Address</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:03:07</td>
+																	<td class='step-details'>Enter City</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:03:07</td>
+																	<td class='step-details'>Enter State/Province</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:03:07</td>
+																	<td class='step-details'>Enter Zip Postal Code</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:03:07</td>
+																	<td class='step-details'>Enter Country</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:03:07</td>
+																	<td class='step-details'>Click Add Event to Basket</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:03:33</td>
+																	<td class='step-details'>View Basket</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:03:53</td>
+																	<td class='step-details'>Remove Event from Basket</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:04:10</td>
+																	<td class='step-details'>Verify Remove Basket</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:04:10</td>
+																	<td class='step-details'>Event has been removed from Basket successfully</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='1391dc83-f0d9-477c-85c3-ac3072a99412'>
+											<div class='test-head'>
+												<span class='test-name'>Sprint 2 - Book Free Event </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2018-03-19 20:04:10</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2018-03-19 20:05:09</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 58s+473ms</span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:04:12</td>
+																	<td class='step-details'>Enter Event name in Search Box</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:04:13</td>
+																	<td class='step-details'>Click on Search</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:04:25</td>
+																	<td class='step-details'>Select the Event</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:04:36</td>
+																	<td class='step-details'>Click Book Now</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:04:49</td>
+																	<td class='step-details'>Select Pardot Title</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:04:49</td>
+																	<td class='step-details'>Enter Pardot First Name</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:04:49</td>
+																	<td class='step-details'>Enter Pardot Last Name</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:04:49</td>
+																	<td class='step-details'>Enter Pardot Job Title</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:04:49</td>
+																	<td class='step-details'>Enter Pardot Company</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:04:49</td>
+																	<td class='step-details'>Enter Pardot Email</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:04:49</td>
+																	<td class='step-details'>Enter Pardot Phone</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:04:49</td>
+																	<td class='step-details'>Click Submit</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:04:58</td>
+																	<td class='step-details'>Verify Pardot Form</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:05:00</td>
+																	<td class='step-details'>Verification of Pardot Form successful</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:05:01</td>
+																	<td class='step-details'>Click Logout</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:05:09</td>
+																	<td class='step-details'>Logged out Successfully</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active fail ' extentid='6b2e71b0-21b3-4705-a8ea-52ca0e10843e'>
+											<div class='test-head'>
+												<span class='test-name'>Sprint 2 - Member User Sign In </span>
+												<span class='test-status label right outline capitalize fail'>fail</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2018-03-19 20:05:27</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:05:27</td>
+																	<td class='step-details'>Click on login link</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:05:37</td>
+																	<td class='step-details'>Enter Email ID</td>
+																</tr>
+																<tr>
+																	<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+																	<td class='timestamp'>20:05:37</td>
+																	<td class='step-details'>enterEmail_xpath Element not Visible after Wait</td>
+																</tr>
+																<tr>
+																	<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+																	<td class='timestamp'>20:05:37</td>
+																	<td class='step-details'>enterEmail_xpath Unable to enter text</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:05:37</td>
+																	<td class='step-details'>Enter Password</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:05:40</td>
+																	<td class='step-details'>Click on SignIn button</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:06:13</td>
+																	<td class='step-details'>Login Successful</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='861ac363-acc1-4b3c-b6f5-eb03a74bfd97'>
+											<div class='test-head'>
+												<span class='test-name'>Sprint 2 - Add and Update Basket for Multiple Events </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2018-03-19 20:06:13</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2018-03-19 20:10:29</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 4m 16s+60ms</span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:06:13</td>
+																	<td class='step-details'>Enter Event name in Search Box</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:06:13</td>
+																	<td class='step-details'>Click on Search</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:06:28</td>
+																	<td class='step-details'>Select the Event</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:06:40</td>
+																	<td class='step-details'>Click Book Now</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:06:50</td>
+																	<td class='step-details'>Click Add Delegate</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:06:51</td>
+																	<td class='step-details'>Enter Title</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:06:52</td>
+																	<td class='step-details'>Enter First Name</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:06:52</td>
+																	<td class='step-details'>Enter Last Name</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:06:52</td>
+																	<td class='step-details'>Enter Email ID</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:06:52</td>
+																	<td class='step-details'>Enter Telephone Number</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:06:52</td>
+																	<td class='step-details'>Enter Street Address</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:06:53</td>
+																	<td class='step-details'>Enter City</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:06:53</td>
+																	<td class='step-details'>Enter State/Province</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:06:53</td>
+																	<td class='step-details'>Enter Zip Postal Code</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:06:53</td>
+																	<td class='step-details'>Enter Country</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:06:53</td>
+																	<td class='step-details'>Click Add Event to Basket</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:07:12</td>
+																	<td class='step-details'>Enter second Event name in Search Box</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:07:12</td>
+																	<td class='step-details'>Click on Search</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:07:24</td>
+																	<td class='step-details'>Select the second  Event</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:07:35</td>
+																	<td class='step-details'>Click Book Now</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:07:45</td>
+																	<td class='step-details'>Click Add Delegate</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:07:46</td>
+																	<td class='step-details'>Enter Title</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:07:46</td>
+																	<td class='step-details'>Enter First Name</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:07:46</td>
+																	<td class='step-details'>Enter Last Name</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:07:46</td>
+																	<td class='step-details'>Enter Email ID</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:07:46</td>
+																	<td class='step-details'>Enter Telephone Number</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:07:46</td>
+																	<td class='step-details'>Enter Street Address</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:07:47</td>
+																	<td class='step-details'>Enter City</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:07:47</td>
+																	<td class='step-details'>Enter State/Province</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:07:47</td>
+																	<td class='step-details'>Enter Zip Postal Code</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:07:47</td>
+																	<td class='step-details'>Enter Country</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:07:47</td>
+																	<td class='step-details'>Click Add Event to Basket</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:08:14</td>
+																	<td class='step-details'>View Basket</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:08:31</td>
+																	<td class='step-details'>Click on Edit First Event</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:08:42</td>
+																	<td class='step-details'>Edit First Event Delegate Details</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:08:42</td>
+																	<td class='step-details'>Edit Title</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:08:42</td>
+																	<td class='step-details'>Edit First Name</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:08:42</td>
+																	<td class='step-details'>Edit Last Name</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:08:42</td>
+																	<td class='step-details'>Edit Email ID</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:08:43</td>
+																	<td class='step-details'>Edit Telephone Number</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:08:43</td>
+																	<td class='step-details'>Edit Street Address</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:08:43</td>
+																	<td class='step-details'>Edit City</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:08:43</td>
+																	<td class='step-details'>Edit State/Province</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:08:44</td>
+																	<td class='step-details'>Edit Zip Postal Code</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:08:44</td>
+																	<td class='step-details'>Edit Country</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:08:46</td>
+																	<td class='step-details'>Click on Update First Event</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:09:13</td>
+																	<td class='step-details'>Click on Second First Event</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:09:22</td>
+																	<td class='step-details'>Edit Second Event Delegate Details</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:09:23</td>
+																	<td class='step-details'>Edit Title</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:09:23</td>
+																	<td class='step-details'>Edit First Name</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:09:24</td>
+																	<td class='step-details'>Edit Last Name</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:09:24</td>
+																	<td class='step-details'>Edit Email ID</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:09:24</td>
+																	<td class='step-details'>Edit Telephone Number</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:09:24</td>
+																	<td class='step-details'>Edit Street Address</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:09:24</td>
+																	<td class='step-details'>Edit City</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:09:24</td>
+																	<td class='step-details'>Edit State/Province</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:09:25</td>
+																	<td class='step-details'>Edit Zip Postal Code</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:09:25</td>
+																	<td class='step-details'>Edit Country</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:09:25</td>
+																	<td class='step-details'>Click on Update Second Event</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:09:52</td>
+																	<td class='step-details'>Remove Multiple Event from Basket</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:10:29</td>
+																	<td class='step-details'>Verify Remove Basket</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:10:29</td>
+																	<td class='step-details'>Multiple Events has been removed from Basket successfully</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='74fd7b68-4792-4fb9-9ace-cd9178a3dce5'>
+											<div class='test-head'>
+												<span class='test-name'>Sprint 2 - Registered User Sign In </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2018-03-19 20:10:46</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:10:49</td>
+																	<td class='step-details'>Click on login link</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:11:01</td>
+																	<td class='step-details'>Enter Email ID</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:11:08</td>
+																	<td class='step-details'>Enter Password</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:11:10</td>
+																	<td class='step-details'>Click on SignIn button</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:11:22</td>
+																	<td class='step-details'>Login Successful</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='6e6e8fbf-5613-43c7-9bbf-d1739ec67d74'>
+											<div class='test-head'>
+												<span class='test-name'>Sprint 2 - Search product and Download MM </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2018-03-19 20:11:22</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2018-03-19 20:12:19</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 56s+531ms</span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:11:22</td>
+																	<td class='step-details'>Enter product name in Search textbox</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:11:22</td>
+																	<td class='step-details'>Click on Search</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:11:35</td>
+																	<td class='step-details'>Select the Product</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:11:44</td>
+																	<td class='step-details'>Click on Download Now</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:12:02</td>
+																	<td class='step-details'>Enter Pardot Form Details</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:12:02</td>
+																	<td class='step-details'>Enter First Name</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:12:02</td>
+																	<td class='step-details'>Enter Last Name</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:12:02</td>
+																	<td class='step-details'>Enter Email</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:12:02</td>
+																	<td class='step-details'>Select Country</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:12:02</td>
+																	<td class='step-details'>Enter Company</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:12:02</td>
+																	<td class='step-details'>Enter Job Title</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:12:03</td>
+																	<td class='step-details'>Click on Submit</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:12:05</td>
+																	<td class='step-details'>Verify Governance Resilience Pdf</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:12:06</td>
+																	<td class='step-details'>https://www.bsigroup.com/PageFiles/542737/BSI_Governance_Report.pdf</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:12:07</td>
+																	<td class='step-details'>Click Logout</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:12:19</td>
+																	<td class='step-details'>Logged out Successfully</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='ba61de99-ae85-4821-9531-5c57a121c847'>
+											<div class='test-head'>
+												<span class='test-name'>Sprint 3 - Check Product Count in Search List </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2018-03-19 20:12:36</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2018-03-19 20:13:25</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 48s+914ms</span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:12:36</td>
+																	<td class='step-details'>Enter product name in Search textbox</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:12:37</td>
+																	<td class='step-details'>Click on Search</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:12:51</td>
+																	<td class='step-details'>Select 100 items</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:13:25</td>
+																	<td class='step-details'>Count product</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:13:25</td>
+																	<td class='step-details'>No. of Product Link is: 34 
+ , Search Result is: 34</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:13:25</td>
+																	<td class='step-details'>The search count was successful</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='6a50db71-2135-44ab-ba4b-6ee54f441986'>
+											<div class='test-head'>
+												<span class='test-name'>Sprint 3 - Check Withdrawn Status for Products </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2018-03-19 20:13:47</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:13:47</td>
+																	<td class='step-details'>Search PAS Product</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:13:47</td>
+																	<td class='step-details'>Enter product name in Search textbox</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:13:47</td>
+																	<td class='step-details'>Click on Search</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:13:56</td>
+																	<td class='step-details'>Select maximum items</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:13:56</td>
+																	<td class='step-details'>Select 100 items</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>Check Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The status of the product is: Current</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The status of the product is: Current</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The status of the product is: Current</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The status of the product is: Current</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The status of the product is: Current</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:31</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The status of the product is: Current</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The status of the product is: Current</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The status of the product is: Current</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The status of the product is: Confirmed</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The status of the product is: Confirmed</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The status of the product is: Under Review</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The status of the product is: Under Review</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The status of the product is: Under Review</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The status of the product is: Under Review</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The status of the product is: Under Review</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='18c2a49a-0530-47b5-b073-d40ecf49fbd6'>
+											<div class='test-head'>
+												<span class='test-name'>Sprint 3 - Check Withdrawn Status for Events </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2018-03-19 20:14:32</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>Search Events</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>Enter product name in Search textbox</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:32</td>
+																	<td class='step-details'>Click on Search</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:46</td>
+																	<td class='step-details'>Select maximum items</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:14:46</td>
+																	<td class='step-details'>Select 100 items</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:16</td>
+																	<td class='step-details'>Check Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:16</td>
+																	<td class='step-details'>The status of the product is: Current</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:15:16</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:16</td>
+																	<td class='step-details'>The status of the product is: Confirmed</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:15:16</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:16</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:15:16</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:16</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:15:16</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='9f75e644-4cee-4aaf-bd2b-3def0d036d47'>
+											<div class='test-head'>
+												<span class='test-name'>Sprint 3 - Check Withdrawn Status for Books </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2018-03-19 20:15:16</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2018-03-19 20:15:52</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 36s+216ms</span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:16</td>
+																	<td class='step-details'>Search Books</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:16</td>
+																	<td class='step-details'>Enter product name in Search textbox</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:16</td>
+																	<td class='step-details'>Click on Search</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:26</td>
+																	<td class='step-details'>Select maximum items</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:26</td>
+																	<td class='step-details'>Select 100 items</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:51</td>
+																	<td class='step-details'>Check Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:51</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:15:51</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:51</td>
+																	<td class='step-details'>The status of the product is: Current</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:15:51</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:51</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:15:51</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:51</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:15:51</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The status of the product is: Current</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The status of the product is: Definitive</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:15:52</td>
+																	<td class='step-details'>The search list does not contain Withdrawn status</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='6eb550d4-1604-4e4b-8e2d-894a9fc6cdce'>
+											<div class='test-head'>
+												<span class='test-name'>Sprint 3 - Check Sorting order for Products by Product Type in Search List </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2018-03-19 20:16:13</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2018-03-19 20:19:58</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 3m 45s+275ms</span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:16:13</td>
+																	<td class='step-details'>Search Quality Product</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:16:13</td>
+																	<td class='step-details'>Enter product name in Search textbox</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:16:13</td>
+																	<td class='step-details'>Click on Search</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:16:25</td>
+																	<td class='step-details'>Select 100 items</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:17:00</td>
+																	<td class='step-details'>Select Product Type and Verify Sorting</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:17:00</td>
+																	<td class='step-details'>Select Sort By Product Type</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:17:23</td>
+																	<td class='step-details'>Sort List of Products in Descending Order</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:17:27</td>
+																	<td class='step-details'>Sorting of Product Type in descending order is successful</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:17:33</td>
+																	<td class='step-details'>Click on Next</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:17:56</td>
+																	<td class='step-details'>Select Sort By Product Type</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:17:56</td>
+																	<td class='step-details'>Sort List of Products in Descending Order</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:18:00</td>
+																	<td class='step-details'>Sorting of Product Type in descending order is successful</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:18:05</td>
+																	<td class='step-details'>Click on Next</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:18:30</td>
+																	<td class='step-details'>Select Sort By Product Type</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:18:30</td>
+																	<td class='step-details'>Sort List of Products in Descending Order</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:18:33</td>
+																	<td class='step-details'>Sorting of Product Type in descending order is successful</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:18:39</td>
+																	<td class='step-details'>Click on Next</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:18:59</td>
+																	<td class='step-details'>Select Sort By Product Type</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:18:59</td>
+																	<td class='step-details'>Sort List of Products in Descending Order</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:19:03</td>
+																	<td class='step-details'>Sorting of Product Type in descending order is successful</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:19:08</td>
+																	<td class='step-details'>Click on Next</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:19:56</td>
+																	<td class='step-details'>Select Sort By Product Type</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:19:56</td>
+																	<td class='step-details'>Sort List of Products in Descending Order</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:19:58</td>
+																	<td class='step-details'>Sorting of Product Type in descending order is successful</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='b8071e94-5fe0-4591-8a88-7d32e5ee0f63'>
+											<div class='test-head'>
+												<span class='test-name'>Sprint 3 - Checking Free Event Features in Search List </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2018-03-19 20:20:19</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:20:19</td>
+																	<td class='step-details'>Enter product name in Search textbox</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:20:19</td>
+																	<td class='step-details'>Click on Search</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:20:34</td>
+																	<td class='step-details'>Check Free Event Name</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:20:34</td>
+																	<td class='step-details'>Free Event Name is: Sustainability Performance and Reporting Event – 2016</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:20:34</td>
+																	<td class='step-details'>Free Event Name match is successful</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:20:34</td>
+																	<td class='step-details'>Check Free Event Price</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:20:34</td>
+																	<td class='step-details'>Free Event Price is: Free</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:20:34</td>
+																	<td class='step-details'>Free Event Price match is successful</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:20:34</td>
+																	<td class='step-details'>Check Event Action Button</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:20:34</td>
+																	<td class='step-details'>Event Action Button is: Find Out More</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:20:34</td>
+																	<td class='step-details'>Event Action Button match is successful</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:20:34</td>
+																	<td class='step-details'>Check Event Label</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:20:34</td>
+																	<td class='step-details'>Event Label is: Event</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:20:34</td>
+																	<td class='step-details'>Event Label match is successful</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='90f0aebd-c210-47b4-8e5e-169b8731e860'>
+											<div class='test-head'>
+												<span class='test-name'>Sprint 3 - Checking PAS Product Features in Search List </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2018-03-19 20:20:34</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:20:34</td>
+																	<td class='step-details'>Enter product name in Search textbox</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:20:34</td>
+																	<td class='step-details'>Click on Search</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:20:45</td>
+																	<td class='step-details'>Check PAS Product Name</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:20:46</td>
+																	<td class='step-details'>PAS Product Name is: PAS 1192-3:2014</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:20:46</td>
+																	<td class='step-details'>PAS Product Name match is successful</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:20:46</td>
+																	<td class='step-details'>Check PAS Product Price</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:20:46</td>
+																	<td class='step-details'>PAS Product Price is: £53.00</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:20:46</td>
+																	<td class='step-details'>PAS Product Price match is successful</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:20:46</td>
+																	<td class='step-details'>Check PAS Product Action Button</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:20:46</td>
+																	<td class='step-details'>PAS Product Action Button is: Find Out More</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:20:46</td>
+																	<td class='step-details'>PAS Product Action Button match is successful</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:20:46</td>
+																	<td class='step-details'>Check PAS Product Label</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:20:46</td>
+																	<td class='step-details'>PAS Product Label is: PAS</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:20:46</td>
+																	<td class='step-details'>PAS Product Label match is successful</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active fail ' extentid='dc1fcdc2-fcc7-43c1-a912-469f91355bd2'>
+											<div class='test-head'>
+												<span class='test-name'>Sprint 3 - Checking Paid Event Features in Search List </span>
+												<span class='test-status label right outline capitalize fail'>fail</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2018-03-19 20:20:46</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2018-03-19 20:21:30</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 44s+389ms</span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:20:46</td>
+																	<td class='step-details'>Enter product name in Search textbox</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:20:46</td>
+																	<td class='step-details'>Click on Search</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:21:00</td>
+																	<td class='step-details'>Check Paid Event Name</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:21:00</td>
+																	<td class='step-details'>Paid Event Name is: Fire Safety Conference</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:21:00</td>
+																	<td class='step-details'>Paid Event Name match is successful</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:21:00</td>
+																	<td class='step-details'>Check Paid Event Price</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:21:00</td>
+																	<td class='step-details'>Paid Event Price is: £800.00</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:21:00</td>
+																	<td class='step-details'>Paid Event Price match is successful</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:21:00</td>
+																	<td class='step-details'>Check Paid Event Member Price</td>
+																</tr>
+																<tr>
+																	<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+																	<td class='timestamp'>20:21:30</td>
+																	<td class='step-details'>Paid Event Member Price match is unsuccessful</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:21:30</td>
+																	<td class='step-details'><a href='D:\BSI_FW\BSI\BSI.Automation.Regression//reports//screenshots//Mon_Mar_19_20_21_30_IST_2018.png' data-featherlight='image'><img class='report-img' src='file:///D:\BSI_FW\BSI\BSI.Automation.Regression//reports//screenshots//Mon_Mar_19_20_21_30_IST_2018.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='3c1ed713-c569-48c3-8275-3e9d16ecc163'>
+											<div class='test-head'>
+												<span class='test-name'>Sprint 3 - Check Product details for Blank Search </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2018-03-19 20:21:52</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2018-03-19 20:22:07</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 14s+381ms</span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:21:52</td>
+																	<td class='step-details'>Clear Text in Search textbox</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:21:52</td>
+																	<td class='step-details'>Click on Search</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:22:05</td>
+																	<td class='step-details'>Verify blank search result</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:22:06</td>
+																	<td class='step-details'>The List of Products on first page</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:22:06</td>
+																	<td class='step-details'>The Product Name is: BS EN 12350-10:2010</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:22:06</td>
+																	<td class='step-details'>The Product Name is: BS EN 12350-11:2010</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:22:06</td>
+																	<td class='step-details'>The Product Name is: BS EN 12350-12:2010</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:22:06</td>
+																	<td class='step-details'>The Product Name is: BS EN 12199:2010</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:22:07</td>
+																	<td class='step-details'>The Product Name is: BS EN 1816:2010</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:22:07</td>
+																	<td class='step-details'>The Product Name is: BS EN 1817:2010</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:22:07</td>
+																	<td class='step-details'>The Product Name is: BS EN 13647:2011</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:22:07</td>
+																	<td class='step-details'>The Product Name is: BS EN 13228:2011</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:22:07</td>
+																	<td class='step-details'>The Product Name is: BS EN 1007-7:2010</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:22:07</td>
+																	<td class='step-details'>The Product Name is: BS EN 16024:2011</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:22:07</td>
+																	<td class='step-details'>The Product Name is:</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:22:07</td>
+																	<td class='step-details'>The result of Blank Search is: Showing 1-10 of 4267 Results</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:22:07</td>
+																	<td class='step-details'>Blank search was successful</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='bdfc86d9-5ebb-4cf9-a85a-d2737f59a9fa'>
+											<div class='test-head'>
+												<span class='test-name'>Sprint 3 - Add PDF Product twice to Basket from Search List </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2018-03-19 20:22:28</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2018-03-19 20:24:32</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 2m 4s+25ms</span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:22:28</td>
+																	<td class='step-details'>Search Quality Product</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:22:28</td>
+																	<td class='step-details'>Enter product name in Search textbox</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:22:28</td>
+																	<td class='step-details'>Click on Search</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:22:43</td>
+																	<td class='step-details'>Click on Add to Basket from Search List</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:22:46</td>
+																	<td class='step-details'>Click on Add to Basket</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:22:50</td>
+																	<td class='step-details'>Select PDF Format</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:23:19</td>
+																	<td class='step-details'>Click on Add to Basket twice from Search List</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:23:22</td>
+																	<td class='step-details'>Click on Add to Basket</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:23:27</td>
+																	<td class='step-details'>Select PDF Format</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:23:32</td>
+																	<td class='step-details'>Verify Alert message for adding PDF product twice</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:23:34</td>
+																	<td class='step-details'>Checking warning message</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:23:34</td>
+																	<td class='step-details'>Warning message is: The item you are trying to add is already in your basket. Because of copyright, you can't add this product a second time in PDF format. If you want to buy more than 1 PDF copy, you may want to purchase a licence (Email: copyright@bsigroup.com ; Tel +44 20 8996 7070.). Alternatively, you can add this item to your basket in a different format.</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:23:35</td>
+																	<td class='step-details'>Check warning message on adding PDF product twice was successful</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:23:35</td>
+																	<td class='step-details'>View Basket</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:23:47</td>
+																	<td class='step-details'>Click on View Basket</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:24:08</td>
+																	<td class='step-details'>Remove the Product</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:24:13</td>
+																	<td class='step-details'>Click on Remove Item</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:24:29</td>
+																	<td class='step-details'>Get the text of the remove basket message</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:24:32</td>
+																	<td class='step-details'>The Verfication message is: You have no items in your shopping basket.
+Click here to continue shopping.</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='05c7f3e5-e8ac-41fd-bc57-c673787f685b'>
+											<div class='test-head'>
+												<span class='test-name'>Sprint 3 - Verify Sorting order for Products by Published Date in Search List </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2018-03-19 20:24:50</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2018-03-19 20:29:01</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 4m 11s+391ms</span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:24:50</td>
+																	<td class='step-details'>Search ASTM Product</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:24:50</td>
+																	<td class='step-details'>Enter product name in Search textbox</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:24:50</td>
+																	<td class='step-details'>Click on Search</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:25:02</td>
+																	<td class='step-details'>Select 100 items</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:25:38</td>
+																	<td class='step-details'>Select Published Date and Verify Sorting</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:25:38</td>
+																	<td class='step-details'>Select Sort By Published Date</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:25:54</td>
+																	<td class='step-details'>Sort List of Products in Descending Order</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:26:00</td>
+																	<td class='step-details'>The sorted list is: [Wed Nov 15 00:00:00 IST 2017, Wed Nov 01 00:00:00 IST 2017, Fri Oct 20 00:00:00 IST 2017, Tue Sep 12 00:00:00 IST 2017, Fri Aug 18 00:00:00 IST 2017, Fri Aug 18 00:00:00 IST 2017, Tue Aug 15 00:00:00 IST 2017, Tue Aug 08 00:00:00 IST 2017, Sat Jul 01 00:00:00 IST 2017, Sat Apr 01 00:00:00 IST 2017, Sat Apr 01 00:00:00 IST 2017, Wed Aug 31 00:00:00 IST 2016, Wed Apr 30 00:00:00 IST 2014, Sat Feb 15 00:00:00 IST 2014, Wed Jan 15 00:00:00 IST 2014, Sat Jan 11 00:00:00 IST 2014, Fri Jan 03 00:00:00 IST 2014, Fri Jan 03 00:00:00 IST 2014, Fri Jan 03 00:00:00 IST 2014, Fri Jan 03 00:00:00 IST 2014, Fri Jan 03 00:00:00 IST 2014, Fri Jan 03 00:00:00 IST 2014, Fri Jan 03 00:00:00 IST 2014, Fri Jan 03 00:00:00 IST 2014, Fri Jan 03 00:00:00 IST 2014, Fri Jan 03 00:00:00 IST 2014, Fri Jan 03 00:00:00 IST 2014, Fri Jan 03 00:00:00 IST 2014, Fri Jan 03 00:00:00 IST 2014, Fri Jan 03 00:00:00 IST 2014, Thu Jan 02 00:00:00 IST 2014, Thu Jan 02 00:00:00 IST 2014, Thu Jan 02 00:00:00 IST 2014, Thu Jan 02 00:00:00 IST 2014, Thu Jan 02 00:00:00 IST 2014, Thu Jan 02 00:00:00 IST 2014, Thu Jan 02 00:00:00 IST 2014, Thu Jan 02 00:00:00 IST 2014, Thu Jan 02 00:00:00 IST 2014, Thu Jan 02 00:00:00 IST 2014, Thu Jan 02 00:00:00 IST 2014, Thu Jan 02 00:00:00 IST 2014, Thu Jan 02 00:00:00 IST 2014, Thu Jan 02 00:00:00 IST 2014, Thu Jan 02 00:00:00 IST 2014, Thu Jan 02 00:00:00 IST 2014, Thu Jan 02 00:00:00 IST 2014, Thu Jan 02 00:00:00 IST 2014, Thu Jan 02 00:00:00 IST 2014, Wed Jan 01 00:00:00 IST 2014, Wed Jan 01 00:00:00 IST 2014, Thu Jan 10 00:00:00 IST 2013, Fri Apr 01 00:00:00 IST 2011, Fri Apr 01 00:00:00 IST 2011, Fri Apr 01 00:00:00 IST 2011, Fri Apr 01 00:00:00 IST 2011, Fri Apr 01 00:00:00 IST 2011, Fri Apr 01 00:00:00 IST 2011, Fri Apr 01 00:00:00 IST 2011, Fri Apr 01 00:00:00 IST 2011, Fri Apr 01 00:00:00 IST 2011, Fri Apr 01 00:00:00 IST 2011, Fri Apr 01 00:00:00 IST 2011, Fri Apr 01 00:00:00 IST 2011, Fri Apr 01 00:00:00 IST 2011, Tue Mar 15 00:00:00 IST 2011, Tue Mar 15 00:00:00 IST 2011, Tue Mar 15 00:00:00 IST 2011, Tue Mar 01 00:00:00 IST 2011, Tue Mar 01 00:00:00 IST 2011, Tue Mar 01 00:00:00 IST 2011, Tue Mar 01 00:00:00 IST 2011, Tue Mar 01 00:00:00 IST 2011, Tue Mar 01 00:00:00 IST 2011, Tue Mar 01 00:00:00 IST 2011, Tue Mar 01 00:00:00 IST 2011, Tue Feb 15 00:00:00 IST 2011, Tue Feb 15 00:00:00 IST 2011, Tue Feb 15 00:00:00 IST 2011, Tue Feb 15 00:00:00 IST 2011, Tue Feb 01 00:00:00 IST 2011, Tue Feb 01 00:00:00 IST 2011, Tue Feb 01 00:00:00 IST 2011, Tue Feb 01 00:00:00 IST 2011, Tue Feb 01 00:00:00 IST 2011, Tue Feb 01 00:00:00 IST 2011, Tue Feb 01 00:00:00 IST 2011, Tue Feb 01 00:00:00 IST 2011, Tue Feb 01 00:00:00 IST 2011, Tue Feb 01 00:00:00 IST 2011, Tue Feb 01 00:00:00 IST 2011, Tue Feb 01 00:00:00 IST 2011, Tue Feb 01 00:00:00 IST 2011, Tue Feb 01 00:00:00 IST 2011, Tue Feb 01 00:00:00 IST 2011, Tue Feb 01 00:00:00 IST 2011, Tue Feb 01 00:00:00 IST 2011, Tue Feb 01 00:00:00 IST 2011, Tue Feb 01 00:00:00 IST 2011, Sat Jan 15 00:00:00 IST 2011]</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:26:00</td>
+																	<td class='step-details'>Sorting of Published Date in descending order is successful</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:26:05</td>
+																	<td class='step-details'>Click on NextThe current page is: 1</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:26:29</td>
+																	<td class='step-details'>Select Sort By Published Date</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:26:29</td>
+																	<td class='step-details'>Sort List of Products in Descending Order</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:26:34</td>
+																	<td class='step-details'>The sorted list is: [Sat Jan 15 00:00:00 IST 2011, Wed Jan 12 00:00:00 IST 2011, Wed Jan 05 00:00:00 IST 2011, Tue Jan 04 00:00:00 IST 2011, Tue Jan 04 00:00:00 IST 2011, Tue Jan 04 00:00:00 IST 2011, Tue Jan 04 00:00:00 IST 2011, Mon Jan 03 00:00:00 IST 2011, Mon Jan 03 00:00:00 IST 2011, Mon Jan 03 00:00:00 IST 2011, Mon Jan 03 00:00:00 IST 2011, Mon Jan 03 00:00:00 IST 2011, Mon Jan 03 00:00:00 IST 2011, Mon Jan 03 00:00:00 IST 2011, Mon Jan 03 00:00:00 IST 2011, Mon Jan 03 00:00:00 IST 2011, Sun Jan 02 00:00:00 IST 2011, Sun Jan 02 00:00:00 IST 2011, Sun Jan 02 00:00:00 IST 2011, Sun Jan 02 00:00:00 IST 2011, Sun Jan 02 00:00:00 IST 2011, Sun Jan 02 00:00:00 IST 2011, Sun Jan 02 00:00:00 IST 2011, Sun Jan 02 00:00:00 IST 2011, Sun Jan 02 00:00:00 IST 2011, Sun Jan 02 00:00:00 IST 2011, Sun Jan 02 00:00:00 IST 2011, Sun Jan 02 00:00:00 IST 2011, Sun Jan 02 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Sat Jan 01 00:00:00 IST 2011, Wed Dec 15 00:00:00 IST 2010, Wed Dec 15 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Wed Dec 01 00:00:00 IST 2010, Mon Nov 15 00:00:00 IST 2010]</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:26:34</td>
+																	<td class='step-details'>Sorting of Published Date in descending order is successful</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:26:39</td>
+																	<td class='step-details'>Click on NextThe current page is: 1</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:27:00</td>
+																	<td class='step-details'>Select Sort By Published Date</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:27:00</td>
+																	<td class='step-details'>Sort List of Products in Descending Order</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:27:05</td>
+																	<td class='step-details'>The sorted list is: [Mon Nov 15 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Nov 01 00:00:00 IST 2010, Mon Oct 04 00:00:00 IST 2010, Mon Oct 04 00:00:00 IST 2010, Mon Oct 04 00:00:00 IST 2010, Mon Oct 04 00:00:00 IST 2010, Fri Oct 01 00:00:00 IST 2010, Fri Oct 01 00:00:00 IST 2010, Fri Oct 01 00:00:00 IST 2010, Fri Oct 01 00:00:00 IST 2010, Fri Oct 01 00:00:00 IST 2010, Fri Oct 01 00:00:00 IST 2010, Fri Oct 01 00:00:00 IST 2010, Fri Oct 01 00:00:00 IST 2010, Fri Oct 01 00:00:00 IST 2010, Fri Oct 01 00:00:00 IST 2010, Fri Oct 01 00:00:00 IST 2010, Fri Oct 01 00:00:00 IST 2010, Fri Oct 01 00:00:00 IST 2010, Fri Oct 01 00:00:00 IST 2010, Fri Oct 01 00:00:00 IST 2010, Fri Oct 01 00:00:00 IST 2010, Fri Oct 01 00:00:00 IST 2010, Fri Oct 01 00:00:00 IST 2010, Fri Oct 01 00:00:00 IST 2010, Fri Oct 01 00:00:00 IST 2010, Wed Sep 01 00:00:00 IST 2010, Wed Sep 01 00:00:00 IST 2010, Wed Sep 01 00:00:00 IST 2010, Wed Sep 01 00:00:00 IST 2010, Wed Sep 01 00:00:00 IST 2010, Wed Sep 01 00:00:00 IST 2010, Wed Sep 01 00:00:00 IST 2010, Wed Sep 01 00:00:00 IST 2010, Wed Sep 01 00:00:00 IST 2010, Wed Sep 01 00:00:00 IST 2010, Wed Sep 01 00:00:00 IST 2010, Wed Sep 01 00:00:00 IST 2010, Wed Sep 01 00:00:00 IST 2010, Wed Sep 01 00:00:00 IST 2010, Mon Aug 30 00:00:00 IST 2010, Mon Aug 30 00:00:00 IST 2010, Mon Aug 30 00:00:00 IST 2010, Mon Aug 30 00:00:00 IST 2010, Mon Aug 23 00:00:00 IST 2010, Mon Aug 23 00:00:00 IST 2010, Mon Aug 23 00:00:00 IST 2010, Mon Aug 23 00:00:00 IST 2010, Mon Aug 23 00:00:00 IST 2010, Mon Aug 23 00:00:00 IST 2010, Mon Aug 23 00:00:00 IST 2010, Mon Aug 23 00:00:00 IST 2010, Mon Aug 23 00:00:00 IST 2010, Sun Aug 15 00:00:00 IST 2010, Sun Aug 15 00:00:00 IST 2010, Sun Aug 15 00:00:00 IST 2010, Sun Aug 15 00:00:00 IST 2010, Mon Aug 09 00:00:00 IST 2010, Mon Aug 09 00:00:00 IST 2010, Mon Aug 09 00:00:00 IST 2010, Mon Aug 09 00:00:00 IST 2010, Mon Aug 09 00:00:00 IST 2010, Mon Aug 09 00:00:00 IST 2010, Mon Aug 09 00:00:00 IST 2010, Sun Aug 01 00:00:00 IST 2010, Sun Aug 01 00:00:00 IST 2010, Sun Aug 01 00:00:00 IST 2010, Sun Aug 01 00:00:00 IST 2010, Sun Aug 01 00:00:00 IST 2010, Sun Aug 01 00:00:00 IST 2010, Sun Aug 01 00:00:00 IST 2010, Sun Aug 01 00:00:00 IST 2010, Sun Aug 01 00:00:00 IST 2010, Sun Aug 01 00:00:00 IST 2010]</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:27:05</td>
+																	<td class='step-details'>Sorting of Published Date in descending order is successful</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:27:10</td>
+																	<td class='step-details'>Click on NextThe current page is: 1</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:27:31</td>
+																	<td class='step-details'>Select Sort By Published Date</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:27:31</td>
+																	<td class='step-details'>Sort List of Products in Descending Order</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:27:36</td>
+																	<td class='step-details'>The sorted list is: [Sun Aug 01 00:00:00 IST 2010, Thu Jul 15 00:00:00 IST 2010, Mon Jul 12 00:00:00 IST 2010, Mon Jul 12 00:00:00 IST 2010, Mon Jul 12 00:00:00 IST 2010, Mon Jul 12 00:00:00 IST 2010, Mon Jul 12 00:00:00 IST 2010, Thu Jul 01 00:00:00 IST 2010, Thu Jul 01 00:00:00 IST 2010, Thu Jul 01 00:00:00 IST 2010, Thu Jul 01 00:00:00 IST 2010, Thu Jul 01 00:00:00 IST 2010, Thu Jul 01 00:00:00 IST 2010, Thu Jul 01 00:00:00 IST 2010, Thu Jul 01 00:00:00 IST 2010, Thu Jul 01 00:00:00 IST 2010, Thu Jul 01 00:00:00 IST 2010, Thu Jul 01 00:00:00 IST 2010, Thu Jul 01 00:00:00 IST 2010, Mon Jun 28 00:00:00 IST 2010, Mon Jun 28 00:00:00 IST 2010, Mon Jun 28 00:00:00 IST 2010, Mon Jun 28 00:00:00 IST 2010, Tue Jun 15 00:00:00 IST 2010, Tue Jun 15 00:00:00 IST 2010, Tue Jun 15 00:00:00 IST 2010, Tue Jun 15 00:00:00 IST 2010, Tue Jun 15 00:00:00 IST 2010, Tue Jun 15 00:00:00 IST 2010, Thu Jun 10 00:00:00 IST 2010, Thu Jun 10 00:00:00 IST 2010, Fri Jun 04 00:00:00 IST 2010, Thu Jun 03 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Tue Jun 01 00:00:00 IST 2010, Wed May 26 00:00:00 IST 2010, Mon May 17 00:00:00 IST 2010, Mon May 17 00:00:00 IST 2010, Mon May 17 00:00:00 IST 2010, Mon May 17 00:00:00 IST 2010, Mon May 17 00:00:00 IST 2010, Mon May 17 00:00:00 IST 2010, Sat May 15 00:00:00 IST 2010, Mon May 10 00:00:00 IST 2010, Mon May 10 00:00:00 IST 2010, Mon May 10 00:00:00 IST 2010, Mon May 10 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010]</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:27:36</td>
+																	<td class='step-details'>Sorting of Published Date in descending order is successful</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:27:41</td>
+																	<td class='step-details'>Click on NextThe current page is: 1</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:28:01</td>
+																	<td class='step-details'>Select Sort By Published Date</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:28:01</td>
+																	<td class='step-details'>Sort List of Products in Descending Order</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:28:06</td>
+																	<td class='step-details'>The sorted list is: [Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Sat May 01 00:00:00 IST 2010, Thu Apr 15 00:00:00 IST 2010, Thu Apr 15 00:00:00 IST 2010, Thu Apr 01 00:00:00 IST 2010, Thu Apr 01 00:00:00 IST 2010, Thu Apr 01 00:00:00 IST 2010, Thu Apr 01 00:00:00 IST 2010, Thu Apr 01 00:00:00 IST 2010, Thu Apr 01 00:00:00 IST 2010, Thu Apr 01 00:00:00 IST 2010, Thu Apr 01 00:00:00 IST 2010, Thu Apr 01 00:00:00 IST 2010, Thu Apr 01 00:00:00 IST 2010, Thu Apr 01 00:00:00 IST 2010, Thu Apr 01 00:00:00 IST 2010, Thu Apr 01 00:00:00 IST 2010, Thu Apr 01 00:00:00 IST 2010, Thu Apr 01 00:00:00 IST 2010, Thu Apr 01 00:00:00 IST 2010, Thu Apr 01 00:00:00 IST 2010, Thu Apr 01 00:00:00 IST 2010, Thu Apr 01 00:00:00 IST 2010, Thu Apr 01 00:00:00 IST 2010, Thu Apr 01 00:00:00 IST 2010, Mon Mar 15 00:00:00 IST 2010, Mon Mar 01 00:00:00 IST 2010, Mon Mar 01 00:00:00 IST 2010, Mon Mar 01 00:00:00 IST 2010, Mon Mar 01 00:00:00 IST 2010, Mon Mar 01 00:00:00 IST 2010, Mon Mar 01 00:00:00 IST 2010, Mon Mar 01 00:00:00 IST 2010, Mon Feb 15 00:00:00 IST 2010, Mon Feb 15 00:00:00 IST 2010, Mon Feb 01 00:00:00 IST 2010, Mon Feb 01 00:00:00 IST 2010, Fri Jan 15 00:00:00 IST 2010, Tue Jan 12 00:00:00 IST 2010, Tue Jan 12 00:00:00 IST 2010, Tue Jan 12 00:00:00 IST 2010, Sun Jan 10 00:00:00 IST 2010, Sun Jan 10 00:00:00 IST 2010, Sun Jan 10 00:00:00 IST 2010, Sun Jan 10 00:00:00 IST 2010, Sun Jan 10 00:00:00 IST 2010, Sun Jan 10 00:00:00 IST 2010, Sun Jan 10 00:00:00 IST 2010, Thu Jan 07 00:00:00 IST 2010, Tue Jan 05 00:00:00 IST 2010, Tue Jan 05 00:00:00 IST 2010, Fri Jan 01 00:00:00 IST 2010, Fri Jan 01 00:00:00 IST 2010, Fri Jan 01 00:00:00 IST 2010, Fri Jan 01 00:00:00 IST 2010, Fri Jan 01 00:00:00 IST 2010, Fri Jan 01 00:00:00 IST 2010, Fri Jan 01 00:00:00 IST 2010, Fri Jan 01 00:00:00 IST 2010, Fri Jan 01 00:00:00 IST 2010, Fri Jan 01 00:00:00 IST 2010, Fri Jan 01 00:00:00 IST 2010, Tue Dec 15 00:00:00 IST 2009, Tue Dec 15 00:00:00 IST 2009, Tue Dec 15 00:00:00 IST 2009, Tue Dec 01 00:00:00 IST 2009, Tue Dec 01 00:00:00 IST 2009, Tue Dec 01 00:00:00 IST 2009, Tue Dec 01 00:00:00 IST 2009, Tue Dec 01 00:00:00 IST 2009, Tue Dec 01 00:00:00 IST 2009, Tue Dec 01 00:00:00 IST 2009, Tue Dec 01 00:00:00 IST 2009, Tue Dec 01 00:00:00 IST 2009]</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:28:06</td>
+																	<td class='step-details'>Sorting of Published Date in descending order is successful</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:28:11</td>
+																	<td class='step-details'>Click on NextThe current page is: 1</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:28:58</td>
+																	<td class='step-details'>Select Sort By Published Date</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:28:58</td>
+																	<td class='step-details'>Sort List of Products in Descending Order</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>20:29:01</td>
+																	<td class='step-details'>The sorted list is: [Tue Dec 01 00:00:00 IST 2009, Tue Dec 01 00:00:00 IST 2009, Tue Dec 01 00:00:00 IST 2009, Tue Dec 01 00:00:00 IST 2009, Tue Dec 01 00:00:00 IST 2009, Sun Nov 15 00:00:00 IST 2009, Sun Nov 01 00:00:00 IST 2009, Sun Nov 01 00:00:00 IST 2009, Sun Nov 01 00:00:00 IST 2009, Sun Nov 01 00:00:00 IST 2009, Sun Nov 01 00:00:00 IST 2009, Sun Nov 01 00:00:00 IST 2009, Sun Nov 01 00:00:00 IST 2009, Thu Oct 15 00:00:00 IST 2009, Thu Oct 01 00:00:00 IST 2009, Thu Oct 01 00:00:00 IST 2009, Thu Oct 01 00:00:00 IST 2009, Thu Oct 01 00:00:00 IST 2009, Thu Oct 01 00:00:00 IST 2009, Thu Oct 01 00:00:00 IST 2009, Thu Oct 01 00:00:00 IST 2009, Thu Oct 01 00:00:00 IST 2009, Thu Oct 01 00:00:00 IST 2009, Thu Oct 01 00:00:00 IST 2009, Thu Oct 01 00:00:00 IST 2009, Thu Oct 01 00:00:00 IST 2009, Thu Oct 01 00:00:00 IST 2009, Tue Sep 01 00:00:00 IST 2009, Tue Sep 01 00:00:00 IST 2009, Tue Sep 01 00:00:00 IST 2009, Tue Sep 01 00:00:00 IST 2009, Tue Sep 01 00:00:00 IST 2009, Tue Sep 01 00:00:00 IST 2009, Tue Sep 01 00:00:00 IST 2009, Tue Sep 01 00:00:00 IST 2009, Tue Sep 01 00:00:00 IST 2009, Tue Sep 01 00:00:00 IST 2009, Tue Sep 01 00:00:00 IST 2009, Tue Sep 01 00:00:00 IST 2009, Sat Aug 01 00:00:00 IST 2009, Sat Aug 01 00:00:00 IST 2009, Wed Jul 01 00:00:00 IST 2009, Wed Jul 01 00:00:00 IST 2009, Wed Jul 01 00:00:00 IST 2009, Wed Jul 01 00:00:00 IST 2009, Wed Jul 01 00:00:00 IST 2009, Fri May 01 00:00:00 IST 2009, Sun Feb 01 00:00:00 IST 2009, Sun Jun 01 00:00:00 IST 2008, Mon Feb 11 00:00:00 IST 2008, Tue Dec 12 00:00:00 IST 2006, Sun May 15 00:00:00 IST 2005, Mon Mar 10 00:00:00 IST 2003]</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:29:01</td>
+																	<td class='step-details'>Sorting of Published Date in descending order is successful</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id='test-details-wrapper' class='col _addedCell2'>
+					<div class='contents'>
+						<div class='card-panel details-view'>
+							<h5 class='details-name'></h5>
+							<div class='step-filters right'>
+								<span class='btn-floating btn-small waves-effect waves-light blue' status='info' alt='info' title='info'><i class='mdi-action-info-outline'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light green' status='pass' alt='pass' title='pass'><i class='mdi-action-check-circle'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light red' status='fail' alt='fail' title='fail'><i class='mdi-navigation-cancel'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light red darken-4' status='fatal' alt='fatal' title='fatal'><i class='mdi-navigation-cancel'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light red lighten-2' status='error' alt='error' title='error'><i class='mdi-alert-error'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light orange' alt='warning' status='warning' title='warning'><i class='mdi-alert-warning'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light cyan' status='skip' alt='skip' title='skip'><i class='mdi-content-redo'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light grey darken-2' status='clear-step-filter' alt='Clear filters' title='Clear filters'><i class='mdi-content-clear'></i></span>
+							</div>
+							<div class='details-container'>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /tests -->
+			
+			<!-- categories -->
+			<!-- /categories -->
+			
+			<!-- exceptions -->
+			<!-- /exceptions -->
+			
+			<!-- testrunner logs -->
+			<!-- /testrunner logs -->
+			
+		</div>
+		<!-- /container -->
+		
+		<!-- test dashboard counts setting -->
+		<div id='test-count-setting' class='modal bottom-sheet'> 
+			<div class='modal-content'> 
+				<h5>Configure Tests Count Setting</h5> 
+				<input name='test-count-setting' type='radio' id='parentWithoutNodes' class='with-gap'> 
+				<label for='parentWithoutNodes'>Parent Tests Only (Does not include child nodes in counts)</label> 
+				<br> 
+				<input name='test-count-setting' type='radio' id='parentWithoutNodesAndNodes' class='with-gap'> 
+				<label for='parentWithoutNodesAndNodes'>Parent Tests Without Child Tests + Child Tests</label> 
+				<br> 
+				<input name='test-count-setting' type='radio' id='childNodes' class='with-gap'> 
+				<label for='childNodes'>Child Tests Only</label> 
+			</div> 
+			<div class='modal-footer'> 
+				<a href='#!' class='modal-action modal-close waves-effect waves-green btn'>Save</a> 
+			</div> 
+		</div>
+		<!-- /test dashboard counts setting -->
+		
+		<!-- filter for step status -->
+		<div id='step-status-filter' class='modal bottom-sheet'> 
+			<div class='modal-content'> 
+				<h5>Select status</h5> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-pass'> 
+				<label for='step-dashboard-filter-pass'>Pass</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-fail'> 
+				<label for='step-dashboard-filter-fail'>Fail</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-fatal'> 
+				<label for='step-dashboard-filter-fatal'>Fatal</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-error'> 
+				<label for='step-dashboard-filter-error'>Error</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-warning'> 
+				<label for='step-dashboard-filter-warning'>Warning</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-skip'> 
+				<label for='step-dashboard-filter-skip'>Skipped</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-info'> 
+				<label for='step-dashboard-filter-info'>Info</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-unknown'> 
+				<label for='step-dashboard-filter-unknown'>Unknown</label> 
+			</div>
+			<div class='modal-footer'> 
+				<a href='#!' class='modal-action modal-close waves-effect waves-green btn'>Save</a> 
+			</div> 
+		</div>
+		<!-- /filter for step status -->
+		
+		<script src='https://cdn.rawgit.com/anshooarora/extentreports/6032d73243ba4fe4fb8769eb9c315d4fdf16fe68/cdn/extent.js' type='text/javascript'></script>
+
+		<script>$(document).ready(function() { $('.logo span').html('ExtentReports'); });</script>
+		<script>
+				
+            
+                $(document).ready(function() {
+                    
+                });
+            
+        
+		</script>
+	</body>
+</html>
